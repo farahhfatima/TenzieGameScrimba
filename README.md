@@ -1,5 +1,11 @@
 # Getting Started with Create React App
 
+This is a simple Tenzie React game that I created as part of Scrimba's Front End Developer Course.
+In this project I learnt about: 
+- React hooks (useState/ useEffect) 
+- Asynchronous Javascript
+- Used Figma to design the app's UI/UX 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
