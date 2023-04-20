@@ -35,6 +35,17 @@ export default function App() {
         return () => clearInterval(interval)
     }, [start])
 
+    const  setRecords = React.useCallback (function setRecords() {
+        if (!bestRolls || rolls < bestRolls) {
+            setBestRolls(rolls)
+        }
+        
+        const timeFloored = Math.floor(time/10)
+        if (!bestTime || timeFloored < bestTime) {
+            setBestTime(timeFloored)
+        }
+    },[setBestTime, setBestRolls, bestRolls, bestTime, rolls, time])
+
     React.useEffect(() => {
         const allHeld = dice.every(die => die.isHeld)
         const firstValue = dice[0].value
@@ -44,18 +55,7 @@ export default function App() {
             setStart(false)
             setRecords()
         }
-    }, [dice])
-
-    function setRecords() {
-        if (!bestRolls || rolls < bestRolls) {
-            setBestRolls(rolls)
-        }
-        
-        const timeFloored = Math.floor(time/10)
-        if (!bestTime || timeFloored < bestTime) {
-            setBestTime(timeFloored)
-        }
-    }
+    }, [dice, setRecords])
 
     React.useEffect(() => {
         localStorage.setItem("bestRolls", JSON.stringify(bestRolls));
